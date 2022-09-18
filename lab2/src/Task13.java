@@ -8,7 +8,8 @@ public class Task13 {
         task13OnArray();
         task13OnArrayList();
     }
-    private static void task13OnArray() {   
+
+    private static void task13OnArray() {
         int[] numbers = new int[49];
         for (int i = 0; i < numbers.length; ++i)
             numbers[i] = i + 1;
@@ -27,13 +28,12 @@ public class Task13 {
         return resultNumbers;
     }
 
-    private static int createIndex(int upperbound) throws IllegalArgumentException {
+    private static int createIndex(int upperbound) {
         Random generator = new Random();
         return generator.nextInt(upperbound);
     }
 
-    private static int[] deleteByIndex(int[] array, int index)
-            throws IndexOutOfBoundsException, ArrayStoreException, NullPointerException {
+    private static int[] deleteByIndex(int[] array, int index) {
         int[] newNumbers = new int[array.length - 1];
         System.arraycopy(array, 0, newNumbers, 0, index);
         System.arraycopy(array, index + 1, newNumbers, index, array.length - index - 1);
@@ -48,8 +48,7 @@ public class Task13 {
         System.out.println(ticket);
     }
 
-    private static ArrayList<Integer> createTicket(ArrayList<Integer> numbers) throws IndexOutOfBoundsException,
-            ClassCastException, UnsupportedOperationException, IllegalArgumentException {
+    private static ArrayList<Integer> createTicket(ArrayList<Integer> numbers) {
         ArrayList<Integer> resultNumbers = new ArrayList<>();
         for (int i = 0; i < 6; ++i) {
             int index = createIndex(numbers.size());
@@ -58,5 +57,4 @@ public class Task13 {
         Collections.sort(resultNumbers);
         return resultNumbers;
     }
-    
 }

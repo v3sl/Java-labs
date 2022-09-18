@@ -1,8 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.NoSuchElementException;
 import java.util.Scanner;
-import java.util.regex.PatternSyntaxException;
 import java.util.stream.IntStream;
 
 public class Task14 {
@@ -23,9 +21,7 @@ public class Task14 {
             System.out.println("Not magic square");
     }
 
-    private static int[][] makeMatrixOnArray()
-            throws IllegalStateException, NoSuchElementException, PatternSyntaxException, NumberFormatException,
-            IllegalArgumentException {
+    private static int[][] makeMatrixOnArray() {
         int[][] matrix = new int[0][0];
         int rowIndex = 0;
         while (input.hasNextLine()) {
@@ -47,7 +43,7 @@ public class Task14 {
         return matrix;
     }
 
-    private static boolean isMagicSquare(int[][] matrix) throws NullPointerException {
+    private static boolean isMagicSquare(int[][] matrix) {
         int[] sumsOfRows = Arrays.stream(matrix).mapToInt(row -> Arrays.stream(row).sum()).toArray();
         int[] sumsOfColumns = new int[matrix[0].length];
         for (int i = 0; i < sumsOfColumns.length; ++i) {
@@ -66,7 +62,7 @@ public class Task14 {
                 .concat(IntStream.of(sumsOfRows),
                         IntStream.concat(IntStream.of(sumsOfColumns), IntStream.of(sumsOfDiagonals)))
                 .toArray();
-        return Arrays.asList(sums).stream().distinct().count() <= 1;
+        return IntStream.of(sums).distinct().toArray().length == 1;
     }
 
     private static void task14onArrayList() {
@@ -77,8 +73,7 @@ public class Task14 {
             System.out.println("Not magic square");
     }
 
-    private static ArrayList<ArrayList<Integer>> makeMatrixOnArrayList() throws IllegalStateException,
-            NoSuchElementException, PatternSyntaxException, NumberFormatException, IndexOutOfBoundsException {
+    private static ArrayList<ArrayList<Integer>> makeMatrixOnArrayList() {
         ArrayList<ArrayList<Integer>> matrix = new ArrayList<ArrayList<Integer>>();
         while (input.hasNextLine()) {
             String rowString = input.nextLine();
@@ -102,7 +97,7 @@ public class Task14 {
         return matrix;
     }
 
-    private static boolean isMagicSquare(ArrayList<ArrayList<Integer>> matrix) throws IndexOutOfBoundsException {
+    private static boolean isMagicSquare(ArrayList<ArrayList<Integer>> matrix) {
         ArrayList<Integer> sums = new ArrayList<>();
         for (int i = 0; i < matrix.size(); ++i) {
             int sum = 0;
@@ -125,6 +120,6 @@ public class Task14 {
         }
         sums.add(sumOfFirstDiagonal);
         sums.add(sumOfSecondDiagonal);
-        return sums.stream().distinct().count() <= 1;
+        return sums.stream().distinct().count() == 1;
     }
 }

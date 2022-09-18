@@ -41,7 +41,7 @@ public class Task15 {
 
     private static void task15OnArrayList(int n) {
         ArrayList<ArrayList<Integer>> triangle = createTriangleOnArrayList(n);
-        System.out.println(triangle);
+        triangle.stream().forEach(row -> System.out.println(row));
     }
 
     private static ArrayList<ArrayList<Integer>> createTriangleOnArrayList(int n) {

@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Task1 {
@@ -6,13 +5,16 @@ public class Task1 {
         Scanner input = new Scanner(System.in);
         String line = input.nextLine();
         input.close();
-        String[] numbers = line.trim().split("\\s+");
-        double[] doubleValues = Arrays.stream(numbers)
-                .mapToDouble(Double::parseDouble)
-                .toArray();
+        String[] parsedString = line.trim().split("(?=\\.)|(?=[A-Za-z]+)|(?=\\s)");
         line = "";
-        for (double value : doubleValues)
-            line += String.valueOf(value) + " ";
+        for (int i = 0; i < parsedString.length; ++i) {
+            if (parsedString[i].charAt(0) != '.' && parsedString[i].length() > 1
+                    && Character.isDigit(parsedString[i].charAt(1)))
+                line += "" + (!Character.isDigit(parsedString[i].charAt(0)) ? parsedString[i].charAt(0) : "")
+                        + Integer.parseInt(parsedString[i].substring(1));
+            else
+                line += parsedString[i];
+        }
         System.out.println(line);
     }
 }

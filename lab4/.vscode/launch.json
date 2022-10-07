@@ -1,0 +1,49 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch BSTTest",
+            "request": "launch",
+            "mainClass": "BSTTest",
+            "projectName": "lab4_8969ce0b"
+        },
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Launch Task1",
+            "request": "launch",
+            "mainClass": "Task1",
+            "projectName": "lab4_8969ce0b"
+        },
+        {
+            "type": "java",
+            "name": "Launch Task2",
+            "request": "launch",
+            "mainClass": "Task2",
+            "projectName": "lab4_8969ce0b"
+        },
+        {
+            "type": "java",
+            "name": "Launch Task3",
+            "request": "launch",
+            "mainClass": "Task3",
+            "projectName": "lab4_8969ce0b"
+        },
+        {
+            "type": "java",
+            "name": "Launch Task4",
+            "request": "launch",
+            "mainClass": "Task4",
+            "projectName": "lab4_8969ce0b"
+        }
+    ]
+}

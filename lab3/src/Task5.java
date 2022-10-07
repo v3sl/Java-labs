@@ -5,19 +5,14 @@ public class Task5 {
         Scanner input = new Scanner(System.in);
         String line = input.nextLine();
         input.close();
-        line = getCapitalizeWordsString(line);
-        System.out.println(line);
-    }
-
-    private static String getCapitalizeWordsString(String string) {
-        char[] charString = string.toCharArray();
-        for (int i = 0; i < charString.length; ++i) {
-            if (Character.isLetter(charString[i]) && i == 0)
-                charString[i] = Character.toUpperCase(charString[i]);
-            if ((charString[i] == ' ' || charString[i] == '.' || charString[i] == ',')
-                    && Character.isLetter(charString[i + 1]))
-                charString[i + 1] = Character.toUpperCase(charString[i + 1]);
+        String[] words = line.split("(?=\\.)|(?=,)|(?= )");
+        line = "";
+        for (int i = 0; i < words.length; ++i) {
+            if (i == 0)
+                line += words[i].substring(0, 1).toUpperCase() + words[i].substring(1);
+            else
+                line += words[i].substring(0, 1) + words[i].substring(1, 2).toUpperCase() + words[i].substring(1);
         }
-        return String.valueOf(charString);
+        System.out.println(line);
     }
 }

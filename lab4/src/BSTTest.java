@@ -9,10 +9,9 @@ public class BSTTest {
         tree.insert(20);
         tree.insert(15);
 
-        tree.recPreOrder(value -> value++);
         tree.recInOrder(System.out::println);
-        tree.delete(5);
-        tree.recPreOrder(value -> value++);
+        tree.delete(1);
         tree.recInOrder(System.out::println);
+
     }
 }

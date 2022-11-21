@@ -41,14 +41,14 @@ public class QueueFrame<T> extends JFrame {
         add(mainPanel);
     }
 
-    void setDefaultSettings() {
+    private void setDefaultSettings() {
         setSize(WIDTH, HEIGHT);
         setLocationRelativeTo(null);
         setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
-    void initFields() {
+    private void initFields() {
         sizeLabel = new JLabel("Size: 0");
         emptyLabel = new JLabel("empty");
         frontElementLabel = new JLabel("Front: ");
@@ -65,13 +65,13 @@ public class QueueFrame<T> extends JFrame {
         mainPanel = createMainPanel();
     }
 
-    JScrollPane createScroll() {
+    private JScrollPane createScroll() {
         JScrollPane scroll = new JScrollPane(list);
         scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         return scroll;
     }
 
-    JList<String> createQueue() {
+    private JList<String> createQueue() {
         JList<String> list = new JList<>(queue.toDefaultListModel());
         list.setLayoutOrientation(JList.HORIZONTAL_WRAP);
         list.setVisibleRowCount(1);
@@ -79,7 +79,7 @@ public class QueueFrame<T> extends JFrame {
         return list;
     }
 
-    JPanel createQueueInfoPanel() {
+    private JPanel createQueueInfoPanel() {
         JPanel queueInfoPanel = new JPanel();
         queueInfoPanel.setLayout(new BoxLayout(queueInfoPanel, BoxLayout.X_AXIS));
         queueInfoPanel.add(sizeLabel);
@@ -92,7 +92,7 @@ public class QueueFrame<T> extends JFrame {
         return queueInfoPanel;
     }
 
-    JPanel createQueueUtilsPanel() {
+    private  JPanel createQueueUtilsPanel() {
         JPanel queueUtilsPanel = new JPanel();
         queueUtilsPanel.setLayout(new BoxLayout(queueUtilsPanel, BoxLayout.X_AXIS));
         queueUtilsPanel.setLayout(new BoxLayout(queueUtilsPanel, BoxLayout.X_AXIS));
@@ -106,7 +106,7 @@ public class QueueFrame<T> extends JFrame {
         return queueUtilsPanel;
     }
 
-    JPanel createMainPanel() {
+    private JPanel createMainPanel() {
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout());
         mainPanel.add(scroll, BorderLayout.CENTER);
@@ -114,7 +114,7 @@ public class QueueFrame<T> extends JFrame {
         return mainPanel;
     }
 
-    JPanel createQueuePanel() {
+    private JPanel createQueuePanel() {
         JPanel queuePanel = new JPanel();
         queuePanel.setLayout(new BoxLayout(queuePanel, BoxLayout.Y_AXIS));
         queuePanel.add(queueInfoPanel);
@@ -123,7 +123,7 @@ public class QueueFrame<T> extends JFrame {
         return queuePanel;
     }
 
-    JButton createClearButton() {
+    private JButton createClearButton() {
         JButton clearButton = new JButton("Clear");
         clearButton.addActionListener(new ActionListener() {
             @Override
@@ -136,7 +136,7 @@ public class QueueFrame<T> extends JFrame {
         return clearButton;
     }
 
-    JButton createPushButton() {
+    private JButton createPushButton() {
         JButton pushButton = new JButton("Push");
         pushButton.addActionListener(new ActionListener() {
             @Override
@@ -154,7 +154,7 @@ public class QueueFrame<T> extends JFrame {
         return pushButton;
     }
 
-    JButton createPushAllButton() {
+    private JButton createPushAllButton() {
         JButton pushAllButton = new JButton("Push all");
         pushAllButton.addActionListener(new ActionListener() {
             @Override
@@ -177,7 +177,7 @@ public class QueueFrame<T> extends JFrame {
         return pushAllButton;
     }
 
-    JButton createPopButton() {
+    private JButton createPopButton() {
         popButton = new JButton("Pop");
         popButton.addActionListener(new ActionListener() {
             @Override
@@ -190,7 +190,7 @@ public class QueueFrame<T> extends JFrame {
         return popButton;
     }
 
-    void updateState() {
+    private void updateState() {
         sizeLabel.setText("Size: " + queue.size());
         emptyLabel.setText(queue.isEmpty() ? "empty" : "not empty");
         frontElementLabel.setText(!queue.isEmpty() ? "Front: " + queue.front() : "Front: ");

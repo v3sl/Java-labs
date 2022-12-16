@@ -1,10 +1,8 @@
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
-
 import javax.swing.DefaultListModel;
 
-public class MyQueue<T> implements Iterable<T> {
+public class MyQueue<T> {
     public int size() {
         return elements.size();
     }
@@ -68,28 +66,18 @@ public class MyQueue<T> implements Iterable<T> {
         return "MyQueue [elements=" + elements + "]";
     }
 
-    @Override
-    public Iterator<T> iterator() {
-        // return elements.interator();
-        return new Iterator<T>() {
-            int currentIndex = -1;
-
-            @Override
-            public boolean hasNext() {
-                return currentIndex < size() - 1;
-            }
-
-            @Override
-            public T next() {
-                return elements.get(++currentIndex);
-            }
-        };
-    }
-
     public DefaultListModel<T> toDefaultListModel() {
         DefaultListModel<T> result = new DefaultListModel<>();
         result.addAll(elements);
         return result;
+    }
+
+    public T get(int index) throws IndexOutOfBoundsException {
+        return elements.get(index);
+    }
+
+    public QueueIterator<T> getIterator() {
+        return new QueueIterator<>(this);
     }
 
     private ArrayList<T> elements = new ArrayList<>();
